@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # projeto
 
 A new Flutter project.
@@ -15,3 +16,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# To-Do_List
+Um app feito com base em Flutter e dart de lista de tarefas
+>>>>>>> 5784fac9a040f34eac76418272d2a530cc3fdc40
