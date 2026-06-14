@@ -1,22 +1,115 @@
-<<<<<<< HEAD
-# projeto
+# 📋 To-Do List App
 
-A new Flutter project.
+Um aplicativo desenvolvido em **Flutter** para gerenciamento de tarefas diárias, oferecendo uma experiência simples, intuitiva e organizada para acompanhar compromissos e atividades do dia a dia.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Funcionalidades
 
-A few resources to get you started if this is your first Flutter project:
+### 🔐 Autenticação de Usuários
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Tela de **Login**
+- Tela de **Cadastro**
+- Interface simples e amigável para acesso ao sistema
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# To-Do_List
-Um app feito com base em Flutter e dart de lista de tarefas
->>>>>>> 5784fac9a040f34eac76418272d2a530cc3fdc40
+### 📅 Calendário Integrado
+
+- Visualização de datas por meio de um calendário interativo
+- Seleção de dias específicos para gerenciamento de atividades
+- Navegação intuitiva entre meses e datas
+
+### ✅ Gerenciamento de Tarefas
+
+- Cadastro de tarefas diárias
+- Organização das atividades por data
+- Visualização das tarefas associadas ao dia selecionado
+- Lista de tarefas de fácil utilização
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Flutter**
+- **Dart**
+- **Material Design**
+- **Table Calendar** (para exibição do calendário)
+
+---
+
+## 📱 Estrutura do Aplicativo
+
+### Tela de Login
+
+Permite que o usuário acesse sua conta utilizando suas credenciais.
+
+### Tela de Cadastro
+
+Possibilita o registro de novos usuários para utilização do aplicativo.
+
+### Tela de Calendário
+
+Apresenta um calendário interativo onde o usuário pode selecionar uma data específica.
+
+### Tela de Lista de Tarefas
+
+Exibe e organiza as tarefas vinculadas à data escolhida no calendário.
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+
+- Flutter SDK instalado
+- Dart SDK
+- Android Studio ou VS Code
+- Emulador Android/iOS ou dispositivo físico
+
+### Instalação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/CromaLin/To-Do_List
+```
+
+Acesse a pasta do projeto:
+
+```bash
+cd SEU_REPOSITORIO
+```
+
+Instale as dependências:
+
+```bash
+flutter pub get
+```
+
+Execute o projeto:
+
+```bash
+flutter run
+```
+
+---
+
+## 🎯 Objetivo do Projeto
+
+Este projeto foi desenvolvido com o objetivo de aplicar conceitos de desenvolvimento mobile utilizando Flutter, incluindo:
+
+- Navegação entre telas
+- Gerenciamento de estado
+- Manipulação de datas
+- Componentes visuais do Material Design
+- Organização de tarefas por calendário
+- Estruturação de aplicações móveis modernas
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Marco Antonio Linck Santos** como projeto de estudo e prática em desenvolvimento mobile com Flutter.
+
+---
+
+⭐ Caso tenha gostado do projeto, considere deixar uma estrela no repositório!
