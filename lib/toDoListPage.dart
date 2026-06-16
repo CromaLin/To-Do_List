@@ -124,7 +124,35 @@ class _ToDoListPageState extends State<ToDoListPage> {
   }
 
   //Função para mostrar um dialogo para remover todas as tarefas
-
+  void _showRemoveAllTasksDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog (
+          title: Text('Remover todas as tarefas'),
+          content: Text('Tem certeza de que deseja remover todas as tarefas?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancelar'),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  tasks.clear();
+                });
+                Navigator.pop(context);
+              },
+              child: Text('Remover todas'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  
   //Função para alternar o estado de conclusão de uma tarefa
   void _toggleTaskCompletion(int index) {
     setState(() {
