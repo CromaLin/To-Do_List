@@ -39,7 +39,9 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     tasks[index].isCompleted
                         ? Icons.check_circle
                         : Icons.radio_button_unchecked,
-                    color: tasks[index].isCompleted ? Colors.green : Colors.red,
+                    color: tasks[index].isCompleted
+                        ? const Color.fromARGB(255, 50, 18, 139)
+                        : Colors.red,
                   ),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -111,11 +113,11 @@ class _ToDoListPageState extends State<ToDoListPage> {
             TextButton(
               onPressed: () {
                 setState(() {
-                  tasks.clear();
+                  tasks.add(Task(name: newTaskName));
                 });
                 Navigator.pop(context);
               },
-              child: Text('Remover todas'),
+              child: Text('Adicionar'),
             ),
           ],
         );
@@ -128,7 +130,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog (
+        return AlertDialog(
           title: Text('Remover todas as tarefas'),
           content: Text('Tem certeza de que deseja remover todas as tarefas?'),
           actions: [
@@ -152,7 +154,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
       },
     );
   }
-  
+
   //Função para alternar o estado de conclusão de uma tarefa
   void _toggleTaskCompletion(int index) {
     setState(() {

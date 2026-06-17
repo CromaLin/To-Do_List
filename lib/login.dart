@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 child: Text('Logar'),
                 onPressed: () {
-                  if (email == 'ma@gmail.com' && senha == '123') {
+                  if (email == 'user' && senha == '123') {
                     // o .push empilha a tela e o .pushReplacement tira do empilhamento as as paginas anteriores, no caso essa
                     /*Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => CalendarPage()),
