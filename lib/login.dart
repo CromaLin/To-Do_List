@@ -1,81 +1,100 @@
 import 'package:flutter/material.dart';
-// import 'todo.dart';
-// import 'calendar.dart';
-
-String email = "";
-String senha = "";
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String email = '';
+  String senha = '';
+
+  void _realizarLogin() {
+    if (email == 'user' && senha == '123') {
+      Navigator.of(context).pushReplacementNamed('/calendar');
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Login incorreto'),
+            content: const Text(
+              'Por favor, tente novamente com o login e senha corretos.',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Fechar'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
+    return Scaffold(
+      appBar: AppBar(title: const Text('Login'), centerTitle: true),
+      body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Icon(Icons.lock_outline, size: 80),
+
+              const SizedBox(height: 24),
+
               TextField(
-                onChanged: (text) {
-                  email = text;
-                },
                 keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Email',
+                  labelText: 'E-mail',
+                  prefixIcon: Icon(Icons.email),
                 ),
-              ), //Esse TextFiel é do box do email
-              SizedBox(height: 10),
-              TextField(
-                onChanged: (text) {
-                  senha = text;
+                onChanged: (value) {
+                  email = value;
                 },
+              ),
+
+              const SizedBox(height: 16),
+
+              TextField(
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Senha',
+                  prefixIcon: Icon(Icons.lock),
                 ),
-              ), //Esse TextFiel é do box da senha
-              SizedBox(height: 10),
-              ElevatedButton(
-                child: Text('Logar'),
-                onPressed: () {
-                  if (email == 'user' && senha == '123') {
-                    // o .push empilha a tela e o .pushReplacement tira do empilhamento as as paginas anteriores, no caso essa
-                    /*Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => CalendarPage()),
-                    );*/
-                    Navigator.of(context).pushReplacementNamed('/calendar');
-                  } else {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: Text('Login incorreto'),
-                          content: Text(
-                            'Por favor tente novamente com o login e senha corretos',
-                          ),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(
-                                  context,
-                                ); //close Dialog (o .pop desempilha as telas)
-                              },
-                              child: Text('Fechar'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  }
+                onChanged: (value) {
+                  senha = value;
                 },
+              ),
+
+              const SizedBox(height: 24),
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _realizarLogin,
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    child: Text('Entrar'),
+                  ),
+                ),
+              ),
+
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+                child: const Text('Criar conta'),
               ),
             ],
           ),

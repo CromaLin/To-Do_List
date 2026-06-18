@@ -1,5 +1,3 @@
-# Miscellaneous
-
 *.class
 *.log
 *.pyc
@@ -9,68 +7,27 @@
 .buildlog/
 .history
 .svn/
-
-# IntelliJ related
-
 *.iml
 *.ipr
 *.iws
 .idea/
-
-# VS Code
-
 .vscode/
-
-# Flutter/Dart/Pub
-
 .dart_tool/
 .packages
 .pub/
 .pub-cache/
 build/
-
-# Generated files
-
-.flutter-plugins
 .flutter-plugins-dependencies
 .metadata
-
-# Android
-
-android/.gradle/
-android/app/debug
-android/app/profile
-android/app/release
-android/local.properties
-android/key.properties
-
-# iOS
-
-ios/Flutter/.last_build_id
-ios/Flutter/Generated.xcconfig
-ios/Flutter/flutter_export_environment.sh
-
-# macOS
-
-macos/Flutter/ephemeral/
-
-# Linux
-
-linux/flutter/ephemeral/
-
-# Windows
-
-windows/flutter/ephemeral/
-
-# Coverage
-
+android/
+ios/
+macos/
+linux/
+windows/
 coverage/
-
-# Obfuscation
-
 app.*.symbols
-
-# Firebase
-
 google-services.json
 GoogleService-Info.plist
+test/
+web/
+analysis_options.yaml
