@@ -31,9 +31,9 @@ flutter run
 
 Para acessar o sistema utilize:
 
-**Usuário:** user
+**Email:** Marco Antonio
 
-**Senha:** 123
+**Senha:** 5154338
 
 ## Estrutura do projeto
 

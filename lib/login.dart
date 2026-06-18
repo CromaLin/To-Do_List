@@ -12,7 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   String senha = '';
 
   void _realizarLogin() {
-    if (email == 'user' && senha == '123') {
+    if (email == 'Marco Antonio' && senha == '5154338') {
       Navigator.of(context).pushReplacementNamed('/calendar');
     } else {
       showDialog(
