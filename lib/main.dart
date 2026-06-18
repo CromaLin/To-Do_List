@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Lista de Tarefas',
       theme: ThemeData(
         colorScheme: .fromSeed(
-          seedColor: const Color.fromARGB(255, 3, 146, 103),
+          seedColor: const Color.fromARGB(255, 182, 1, 253),
         ),
       ),
       // home: LoginPage(),

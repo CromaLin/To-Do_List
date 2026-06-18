@@ -15,76 +15,131 @@ class _ToDoListPageState extends State<ToDoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'To-Do List - ${widget.selectedDate.day}/${widget.selectedDate.month}/${widget.selectedDate.year}',
+      appBar: AppBar(title: const Text("Lista de Tarefas"), centerTitle: true),
+
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF6A11CB), Color(0xFF2575FC)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
         ),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: tasks.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    tasks[index].name,
-                    style: TextStyle(
-                      decoration: tasks[index].isCompleted
-                          ? TextDecoration.lineThrough
-                          : TextDecoration.none,
+
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+
+            const Icon(Icons.task_alt, size: 70, color: Colors.white),
+
+            const SizedBox(height: 10),
+
+            Text(
+              "${widget.selectedDate.day}/${widget.selectedDate.month}/${widget.selectedDate.year}",
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Expanded(
+              child: ListView.builder(
+                itemCount: tasks.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 6,
                     ),
-                  ),
-                  leading: Icon(
-                    tasks[index].isCompleted
-                        ? Icons.check_circle
-                        : Icons.radio_button_unchecked,
+
+                    elevation: 6,
+
                     color: tasks[index].isCompleted
-                        ? const Color.fromARGB(255, 50, 18, 139)
-                        : Colors.red,
-                  ),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.check),
-                        onPressed: () {
-                          _toggleTaskCompletion(index);
-                        },
+                        ? Colors.green.shade100
+                        : Colors.orange.shade100,
+
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+
+                    child: ListTile(
+                      leading: Icon(
+                        tasks[index].isCompleted
+                            ? Icons.check_circle
+                            : Icons.radio_button_unchecked,
+                        color: tasks[index].isCompleted
+                            ? Colors.green
+                            : Colors.orange,
                       ),
-                      IconButton(
-                        icon: Icon(Icons.delete),
-                        onPressed: () {
-                          _removeTask(index);
-                        },
+
+                      title: Text(
+                        tasks[index].name,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          decoration: tasks[index].isCompleted
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
+                        ),
                       ),
-                    ],
+
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.check),
+                            color: Colors.green,
+                            onPressed: () {
+                              _toggleTaskCompletion(index);
+                            },
+                          ),
+
+                          IconButton(
+                            icon: const Icon(Icons.delete),
+                            color: Colors.red,
+                            onPressed: () {
+                              _removeTask(index);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15, left: 10, right: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  FloatingActionButton.extended(
+                    backgroundColor: Colors.green,
+                    onPressed: () {
+                      _showAddTaskDialog(context);
+                      sortTasks();
+                    },
+                    icon: const Icon(Icons.add),
+                    label: const Text("Adicionar"),
                   ),
-                );
-              },
+
+                  FloatingActionButton.extended(
+                    backgroundColor: Colors.red,
+                    onPressed: () {
+                      _showRemoveAllTasksDialog(context);
+                    },
+                    icon: const Icon(Icons.delete_forever),
+                    label: const Text("Limpar"),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    _showAddTaskDialog(context);
-                  },
-                  child: Text('Adicionar Tarefa'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    _showRemoveAllTasksDialog(context);
-                  },
-                  child: Text('Remover Todas'),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -159,6 +214,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
   void _toggleTaskCompletion(int index) {
     setState(() {
       tasks[index].isCompleted = !tasks[index].isCompleted;
+      sortTasks();
     });
   }
 
@@ -166,6 +222,17 @@ class _ToDoListPageState extends State<ToDoListPage> {
   void _removeTask(int index) {
     setState(() {
       tasks.removeAt(index);
+    });
+  }
+
+  //Funçào para ordenar as tarefas
+  void sortTasks() {
+    tasks.sort((a, b) {
+      if (a.isCompleted != b.isCompleted) {
+        return a.isCompleted ? 1 : -1;
+      }
+
+      return a.name.toLowerCase().compareTo(b.name.toLowerCase());
     });
   }
 }
