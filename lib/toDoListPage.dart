@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ToDoListPage extends StatefulWidget {
   final DateTime selectedDate;
 
-  ToDoListPage({Key? key, required this.selectedDate}) : super(key: key);
+  const ToDoListPage({super.key, required this.selectedDate});
 
   @override
   _ToDoListPageState createState() => _ToDoListPageState();

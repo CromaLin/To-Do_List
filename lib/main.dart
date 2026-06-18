@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projeto/calendar.dart';
 import 'package:projeto/login.dart';
 import 'package:projeto/registePage.dart';
-import 'login.dart';
-import 'calendar.dart';
 
 void main() {
   runApp(const MyApp());
